@@ -1,9 +1,9 @@
 import csv
 import scapy.all as scapy
 
-packets=100
+PACKETS=100
 
-with open('protocols.csv','w',newline='') as csvfile:
+with open('protocols.csv', 'w', newline='') as csvfile:
 
     csvwriter = csv.writer(csvfile)
 
@@ -25,8 +25,6 @@ with open('protocols.csv','w',newline='') as csvfile:
         packet_layers = get_packet_layers(packet)
         csvwriter.writerow([get_packet_protocol(packet_layers)])
 
+    scapy.sniff(prn=write_packet, count=PACKETS, store=False)
 
-    scapy.sniff(prn=write_packet, count=packets, store=False)
-
-
-    #the tasks: 1) start the sniff, call a function (write_packet) 2)open a csv file for writing data 3)extract the protocol from the packet 4) write it to the csv
+    #the tasks: 1) start the sniff, call a function (write_packet) 2)open a csv file for writing data 3)extract the protocol from the packet. 4) write it to the csv
