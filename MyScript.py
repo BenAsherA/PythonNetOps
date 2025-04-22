@@ -11,8 +11,6 @@ with open('protocols.csv', 'w', newline='') as csvfile:
         if packet_layers[0] == 'Ether':
             if 'IP' in packet_layers[1]:
                 return packet_layers[2]
-            elif str(packet_layers[1]) == 'ARP':
-                return packet_layers[1]
             else:
                 return packet_layers[1]
         else:
